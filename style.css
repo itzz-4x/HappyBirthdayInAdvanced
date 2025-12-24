@@ -14,22 +14,72 @@ body {
   color: white;
 }
 
+/* TAP SCREEN */
+.tap-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #000, #111);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.gift {
+  font-size: 80px;
+  animation: pulse 1.5s infinite;
+}
+
+.tap-screen p {
+  margin-top: 20px;
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* MAIN CONTENT */
+.hidden {
+  display: none;
+}
+
 .coming-soon {
   text-align: center;
   padding: 40px;
 }
 
-.coming-soon h1 {
-  font-size: 48px;
-  color: #ffb3c6;
-  text-shadow: 0 0 20px rgba(255, 179, 198, 0.6);
+.neon-text {
+  font-size: clamp(36px, 6vw, 52px);
+  animation: neonGlow 6s infinite alternate;
+}
+
+@keyframes neonGlow {
+  0% { color:#ffb3c6; text-shadow:0 0 20px #ff6b81; }
+  50% { color:#7dd3fc; text-shadow:0 0 20px #38bdf8; }
+  100% { color:#fde68a; text-shadow:0 0 20px #facc15; }
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 
 .sub {
   margin-top: 20px;
-  font-size: 24px;
-  opacity: 0.85;
-  line-height: 1.7;
+  font-size: 22px;
+  opacity: 0.9;
+  line-height: 1.6;
 }
 
 .countdown {
@@ -47,7 +97,6 @@ body {
 }
 
 .countdown span {
-  display: block;
   font-size: 30px;
   color: #ffd6e0;
 }
@@ -61,102 +110,4 @@ body {
   margin-top: 40px;
   font-style: italic;
   opacity: 0.7;
-  font-size: 18px;
-}
-
-.neon-text {
-  font-size: 48px;
-  font-weight: bold;
-  animation: neonGlow 6s infinite alternate;
-}
-
-/* Neon color changing glow */
-@keyframes neonGlow {
-  0% {
-    color: #ffb3c6;
-    text-shadow:
-      0 0 5px #ffb3c6,
-      0 0 10px #ffb3c6,
-      0 0 20px #ff6b81,
-      0 0 40px #ff6b81;
-  }
-
-  25% {
-    color: #7dd3fc;
-    text-shadow:
-      0 0 5px #7dd3fc,
-      0 0 10px #38bdf8,
-      0 0 20px #0ea5e9,
-      0 0 40px #0284c7;
-  }
-
-  50% {
-    color: #c4b5fd;
-    text-shadow:
-      0 0 5px #c4b5fd,
-      0 0 10px #a78bfa,
-      0 0 20px #8b5cf6,
-      0 0 40px #7c3aed;
-  }
-
-  75% {
-    color: #86efac;
-    text-shadow:
-      0 0 5px #86efac,
-      0 0 10px #4ade80,
-      0 0 20px #22c55e,
-      0 0 40px #16a34a;
-  }
-
-  100% {
-    color: #fde68a;
-    text-shadow:
-      0 0 5px #fde68a,
-      0 0 10px #facc15,
-      0 0 20px #eab308,
-      0 0 40px #ca8a04;
-  }
-}
-
-/* 📱 Mobile Responsive Fix */
-@media (max-width: 480px) {
-
-  .coming-soon {
-    padding: 20px;
-  }
-
-  .neon-text {
-    font-size: 9vw;   /* auto scale with screen */
-    line-height: 1.2;
-  }
-
-  .sub {
-    font-size: 16px;
-  }
-
-  .countdown {
-    gap: 12px;
-    margin-top: 30px;
-  }
-
-  .countdown div {
-    width: 22vw;
-    padding: 14px 8px;
-  }
-
-  .countdown span {
-    font-size: 6vw;
-  }
-
-  .countdown small {
-    font-size: 3vw;
-  }
-
-  .footer {
-    font-size: 12px;
-  }
-}
-
-.neon-text {
-  font-size: clamp(36px, 6vw, 52px);
 }

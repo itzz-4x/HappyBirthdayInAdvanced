@@ -1,20 +1,4 @@
-/* TAP TO OPEN + MUSIC */
-const tapScreen = document.getElementById("tapScreen");
-const mainContent = document.querySelector(".coming-soon");
-const ytMusic = document.getElementById("ytMusic");
-
-tapScreen.addEventListener("click", () => {
-  // 🎵 YouTube Happy Birthday Music
-  // You can change VIDEO ID if you want
-  ytMusic.src =
-    "https://www.youtube.com/embed/90g60l-0jYc?autoplay=1&loop=1&playlist=90g60l-0jYc";
-
-  tapScreen.style.display = "none";
-  mainContent.classList.remove("hidden");
-});
-
-/* COUNTDOWN DATE (CHANGE THIS) */
-// Example: 4 January 2026
+// Birthday date: 4 January
 const birthdayDate = new Date(2026, 0, 4, 0, 0, 0);
 
 function updateCountdown() {
@@ -22,25 +6,22 @@ function updateCountdown() {
   const diff = birthdayDate - now;
 
   if (diff <= 0) {
-    mainContent.innerHTML = `
-      <h1 class="neon-text">🎉 HAPPY BIRTHDAY 🎉</h1>
-      <p class="sub">
-        Today the world got brighter 🤍<br>
-        You are truly special ✨
-      </p>
-      <p class="footer">— Always cheering for you 💖</p>
+    document.querySelector(".coming-soon").innerHTML = `
+      <h1>🎉 It's Time 🎉</h1>
+      <p>Today is the special day 🤍</p>
     `;
     return;
   }
 
-  document.getElementById("days").innerText =
-    Math.floor(diff / (1000 * 60 * 60 * 24));
-  document.getElementById("hours").innerText =
-    Math.floor((diff / (1000 * 60 * 60)) % 24);
-  document.getElementById("minutes").innerText =
-    Math.floor((diff / (1000 * 60)) % 60);
-  document.getElementById("seconds").innerText =
-    Math.floor((diff / 1000) % 60);
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
 }
 
 setInterval(updateCountdown, 1000);
